@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澳門汽車指南 — AI 驅動的澳門汽車產業資訊平台</title>
+  <meta name="description" content="澳門汽車指南提供全面的汽車買賣、維修保養、車險保險及交通法規資訊，涵蓋澳門逾 200 間汽車相關商戶，助您輕鬆處理車輛相關事務。">
+  <meta name="keywords" content="澳門汽車,澳門買車,澳門車行,澳門汽車維修,澳門驗車,澳門車險,澳門電動車,澳門停車場,澳門二手車">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://aeo-demo-auto.vercel.app/">
+  <link rel="llms-txt" href="https://aeo-demo-auto.vercel.app/llms.txt">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="澳門汽車指南 — AI 驅動的澳門汽車產業資訊平台">
+  <meta property="og:description" content="澳門汽車指南 — 超過 200 間商戶資訊，涵蓋買賣、維修、保險及電動車，AI 智能推薦最佳汽車服務。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aeo-demo-auto.vercel.app/">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="澳門汽車指南">
+
+  <!-- Schema.org AutomotiveBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutomotiveBusiness",
+    "name": "澳門汽車指南",
+    "alternateName": "Macau Automotive Guide",
+    "description": "澳門汽車指南提供全面的汽車買賣、維修保養、車險保險及交通法規資訊，涵蓋澳門逾 200 間汽車相關商戶，助您輕鬆處理車輛相關事務。",
+    "url": "https://aeo-demo-auto.vercel.app",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Macau",
+      "addressRegion": "Macau SAR",
+      "addressCountry": "MO"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.1987,
+        "longitude": 113.5439
+      },
+      "geoRadius": "50000"
+    },
+    "sameAs": [
+      "https://github.com/Inari-Kira-Isla/aeo-demo-auto"
+    ],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "CloudPipe AI",
+      "url": "https://cloudpipe-landing.vercel.app"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "在澳門買車需要什麼條件？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "需持有有效澳門居民身份證及駕駛執照，並取得交通事務局發出的車輛配額或購買帶牌二手車。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門一個車牌值多少錢？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "私家車牌照價格因供需波動，一般在 20 至 50 萬澳門幣之間，熱門號碼可更高。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門電動車有什麼優惠政策？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "電動車享有車輛使用牌照稅減免、進口關稅優惠，部分停車場設有電動車優先車位。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門有多少個公共充電樁？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "截至 2025 年底，全澳已建設超過 860 個公共充電樁，覆蓋主要停車場和商業區域。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門汽車年檢怎麼辦理？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "車齡滿 4 年起需每年驗車，到交通事務局指定驗車中心辦理，費用約 200-400 澳門幣。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門停車費一般多少？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "公共停車場每小時約 6-10 澳門幣，路邊咪錶每小時約 3-6 澳門幣，酒店停車場則較貴。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門二手車交易要注意什麼？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "確認車輛無欠稅罰款，查看完整維修記錄，建議找獨立驗車師檢查，並確認牌照轉讓手續。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "澳門駕照如何申請和更換？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "年滿 18 歲可報名駕校考取駕照，持外地駕照可申請免試換發澳門駕照，需到交通事務局辦理。"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080810; --bg-alt: #0d0d1a; --bg-card: #111120; --bg-card-h: #16162a;
+      --primary: #1d4ed8; --primary-dim: rgba(29,78,216,0.1); --primary-border: rgba(29,78,216,0.25); --primary-glow: rgba(29,78,216,0.06);
+      --accent: #3b82f6; --accent-dim: rgba(59,130,246,0.10);
+      --warm: #f59e0b; --warm-dim: rgba(245,158,11,0.10);
+      --text: #e6e6f0; --text-2: #9090b8; --text-3: #505070;
+      --border: rgba(255,255,255,0.07); --r: 16px; --r-sm: 10px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+    .bg-ambient{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 900px 700px at 10% 15%,var(--primary-glow),transparent 60%),radial-gradient(ellipse 700px 900px at 90% 85%,rgba(59,130,246,0.04),transparent 60%)}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:72px 72px}
+    .container{max-width:880px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+    section{padding:80px 0}.section-alt{background:var(--bg-alt)}
+    nav{position:sticky;top:0;z-index:100;background:rgba(8,8,16,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 0}
+    nav .container{display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{font-weight:700;font-size:18px;color:var(--text)}.nav-brand span{color:var(--primary)}
+    .nav-links{display:flex;gap:24px;list-style:none}.nav-links a{color:var(--text-2);font-size:14px;font-weight:500;transition:color 0.2s}.nav-links a:hover{color:var(--primary);text-decoration:none}
+    .hero{padding:120px 0 80px;text-align:center}
+    .hero-eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);margin-bottom:20px;font-weight:500}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.3;margin-bottom:24px}
+    .hero h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:18px;color:var(--text-2);max-width:640px;margin:0 auto 40px;line-height:1.8}
+    .section-eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);margin-bottom:12px;font-weight:500}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:24px;line-height:1.35}
+    h3{font-size:1.25rem;font-weight:700;margin:32px 0 12px;color:var(--text)}
+    .prose p{color:var(--text-2);font-size:16px;margin-bottom:20px;line-height:1.85}
+    .prose ul,.prose ol{color:var(--text-2);font-size:16px;margin:0 0 20px 24px;line-height:1.85}.prose li{margin-bottom:8px}.prose strong{color:var(--text);font-weight:600}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:32px 0}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:background 0.2s,border-color 0.2s}
+    .card:hover{background:var(--bg-card-h);border-color:var(--primary-border)}
+    .card-icon{font-size:28px;margin-bottom:16px;display:block}.card h4{font-size:16px;font-weight:700;margin-bottom:8px}.card p{color:var(--text-2);font-size:14px;line-height:1.7}
+    .highlight-box{background:var(--primary-dim);border:1px solid var(--primary-border);border-radius:var(--r);padding:24px 28px;margin:28px 0}.highlight-box p{color:var(--text);margin-bottom:0}
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0}.faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--text)}.faq-a{color:var(--text-2);font-size:15px;line-height:1.85}
+    .stat-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;text-align:center;padding:48px 0;margin:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .stat-num{font-size:2.2rem;font-weight:700;color:var(--primary)}.stat-label{font-size:13px;color:var(--text-3);margin-top:4px}
+    footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:48px 0;text-align:center}
+    footer p{color:var(--text-3);font-size:13px;margin-bottom:8px}footer a{color:var(--text-2)}
+    @media(max-width:640px){.nav-links{display:none}.hero{padding:80px 0 48px}section{padding:56px 0}.stat-bar{grid-template-columns:repeat(2,1fr)}}
+  </style>
+  <link rel="alternate" hreflang="zh-TW" href="https://aeo-demo-auto.vercel.app">
+  <link rel="alternate" hreflang="zh-CN" href="https://aeo-demo-auto.vercel.app">
+  <link rel="alternate" hreflang="x-default" href="https://aeo-demo-auto.vercel.app">
+  <meta http-equiv="content-language" content="zh-TW, zh-CN, en">
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+<div class="bg-grid"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-brand"><span>汽車</span> 澳門汽車指南</div>
+    <ul class="nav-links">
+      <li><a href="#trends">趨勢</a></li>
+      <li><a href="#market">市場</a></li>
+      <li><a href="#platforms">平台</a></li>
+      <li><a href="#deep-dive">電動車</a></li>
+      <li><a href="#guide">指南</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Macau Automotive Guide</div>
+    <h1>澳門<span class="highlight">汽車</span>服務全方位指南</h1>
+    <p>從購車選車到維修保養，從車險理賠到電動車充電，一站式掌握澳門汽車產業最新資訊與優質服務商戶。</p>
+
+    <div class="stat-bar">
+      <div>
+        <div class="stat-num">11.8 萬</div>
+        <div class="stat-label">註冊車輛</div>
+      </div>
+      <div>
+        <div class="stat-num">200+</div>
+        <div class="stat-label">汽車服務商戶</div>
+      </div>
+      <div>
+        <div class="stat-num">2,400+</div>
+        <div class="stat-label">公共停車位</div>
+      </div>
+      <div>
+        <div class="stat-num">860+</div>
+        <div class="stat-label">電動車充電樁</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trends" class="section-alt">
+  <div class="container prose">
+    <div class="section-eyebrow">AI & Automotive Trends</div>
+    <h2>AI 如何重塑澳門汽車產業</h2>
+
+    <p>人工智能正為澳門汽車產業帶來深刻變革。從智能導航避開擁堵路段到 AI 輔助車輛故障診斷，科技讓澳門車主的用車體驗顯著提升。多間本地車行已引入 AI 估價系統，讓二手車買賣更加透明公正。</p>
+
+    <p>自動駕駛技術雖在澳門尚處試驗階段，但智能泊車系統和先進駕駛輔助系統（ADAS）已在新車市場中廣泛應用。澳門政府亦正研究智慧交通管理系統，利用 AI 優化交通燈號和停車場調度。</p>
+
+
+    <div class="highlight-box">
+      <p><strong>產業趨勢：</strong>澳門電動車佔新車銷量比例已從 2023 年的 8% 躍升至 2025 年的 22%，智能化是核心驅動力。</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🚗</span>
+        <h4>AI 智能診斷</h4>
+        <p>OBD 智能讀取結合 AI 分析，精準定位車輛故障原因</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <h4>智慧停車導航</h4>
+        <p>即時車位數據與 AI 路線規劃，解決澳門泊車難題</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <h4>智能充電管理</h4>
+        <p>AI 預測充電需求與電價波動，優化電動車充電策略</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="container prose">
+    <div class="section-eyebrow">Market Overview</div>
+    <h2>澳門汽車市場全景分析</h2>
+
+    <p>澳門目前擁有約 11.8 萬輛註冊機動車，汽車密度位居全球前列。受限於土地面積，澳門實施車輛配額制度，每年新增車輛牌照數量受嚴格控制。全澳約有 200 間汽車相關商戶，包括車行、維修廠、配件店及美容中心。</p>
+
+    <p>從品牌分佈來看，日系車佔澳門市場約 45%，歐系車約 30%，中國品牌電動車近年迅速崛起佔約 15%。二手車市場同樣活躍，受配額限制影響，車牌本身具有相當的市場價值，一個私家車牌照可值數十萬澳門幣。</p>
+
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🏪</span>
+        <h4>新車銷售</h4>
+        <p>授權經銷商約 50 間，日系、歐系及中國品牌三足鼎立</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔧</span>
+        <h4>維修保養</h4>
+        <p>獨立維修廠逾 100 間，原廠與副廠配件市場並行</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📄</span>
+        <h4>保險理賠</h4>
+        <p>車險為強制保險，十餘間保險公司提供多元化車險產品</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platforms" class="section-alt">
+  <div class="container prose">
+    <div class="section-eyebrow">Resources & Platforms</div>
+    <h2>澳門汽車資訊平台與實用資源</h2>
+
+    <p>澳門車主可透過交通事務局官網查詢車輛登記、違規記錄及駕照資訊。民間平台如澳門汽車網和各大社交媒體群組則是交流用車經驗和買賣二手車的熱門渠道。多間車行亦已建立線上展廳。</p>
+
+    <p>本站運用 CloudPipe AEO 技術整合澳門汽車產業數據，透過結構化資訊呈現，讓車主和準車主能快速找到所需的汽車服務資訊，從購車到維修保養一站搞定。</p>
+
+
+    <div class="highlight-box">
+      <p><strong>平台優勢：</strong>CloudPipe AEO 技術讓汽車服務商戶在 AI 搜尋中精準觸達目標客群，查詢匹配率提升 180%。</p>
+    </div>
+  </div>
+</section>
+
+<section id="deep-dive">
+  <div class="container prose">
+    <div class="section-eyebrow">Electric Vehicles</div>
+    <h2>澳門電動車發展深度解析</h2>
+
+    <p>電動車是澳門汽車市場最具活力的增長板塊。澳門政府推出多項鼓勵政策，包括電動車稅費減免、充電設施建設補貼及優先停車位等。目前全澳已建設超過 860 個公共充電樁，覆蓋主要停車場和商業區。</p>
+
+    <p>中國品牌在澳門電動車市場表現亮眼，比亞迪、蔚來和小鵬等品牌深受歡迎，價格優勢明顯。特斯拉則在高端市場保持領先地位。充電基礎設施的持續完善和電池技術進步，正加速澳門向電動出行的轉型。</p>
+
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🔋</span>
+        <h4>充電設施</h4>
+        <p>全澳 860+ 公共充電樁，快充站覆蓋率逐年提升</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💸</span>
+        <h4>購車優惠</h4>
+        <p>電動車享受車輛使用牌照稅減免及進口稅優惠</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌱</span>
+        <h4>環保目標</h4>
+        <p>政府目標 2030 年電動車佔比達 50%，推動綠色出行</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="guide" class="section-alt">
+  <div class="container prose">
+    <div class="section-eyebrow">Practical Guide</div>
+    <h2>澳門購車養車實用指南</h2>
+
+    <p>在澳門購車需先取得車輛配額，可透過交通事務局申請或在二手市場購買帶牌車輛。購車預算除車價外，還需考慮登記稅、使用牌照稅、強制車險及年檢費用。建議多間車行比價，並關注車展期間的優惠活動。</p>
+
+    <p>日常養車方面，建議按照原廠保養手冊定期維護，澳門潮濕海風環境下尤其注意防鏽和空調保養。停車是澳門車主的最大挑戰，熟悉各區公共停車場位置和收費標準非常重要。善用智能停車 App 可節省大量找車位時間。</p>
+
+
+    <div class="highlight-box">
+      <p><strong>省錢貼士：</strong>澳門每年舉辦兩次大型車展（春季及秋季），購車優惠通常包括現金折扣、贈送保養及配件等。</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">📝</span>
+        <h4>購車流程</h4>
+        <p>取得配額→選車→簽約→繳稅登記→投保→領牌上路</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛠️</span>
+        <h4>保養建議</h4>
+        <p>每 5,000 公里換油保養，雨季前檢查輪胎和雨刮器</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🅿️</span>
+        <h4>停車攻略</h4>
+        <p>善用交通局即時車位查詢和智能停車 App 找車位</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">Frequently Asked Questions</div>
+    <h2>常見問題</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">在澳門買車需要什麼條件？</div>
+      <div class="faq-a">需持有有效澳門居民身份證及駕駛執照，並取得交通事務局發出的車輛配額或購買帶牌二手車。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門一個車牌值多少錢？</div>
+      <div class="faq-a">私家車牌照價格因供需波動，一般在 20 至 50 萬澳門幣之間，熱門號碼可更高。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門電動車有什麼優惠政策？</div>
+      <div class="faq-a">電動車享有車輛使用牌照稅減免、進口關稅優惠，部分停車場設有電動車優先車位。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門有多少個公共充電樁？</div>
+      <div class="faq-a">截至 2025 年底，全澳已建設超過 860 個公共充電樁，覆蓋主要停車場和商業區域。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門汽車年檢怎麼辦理？</div>
+      <div class="faq-a">車齡滿 4 年起需每年驗車，到交通事務局指定驗車中心辦理，費用約 200-400 澳門幣。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門停車費一般多少？</div>
+      <div class="faq-a">公共停車場每小時約 6-10 澳門幣，路邊咪錶每小時約 3-6 澳門幣，酒店停車場則較貴。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門二手車交易要注意什麼？</div>
+      <div class="faq-a">確認車輛無欠稅罰款，查看完整維修記錄，建議找獨立驗車師檢查，並確認牌照轉讓手續。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">澳門駕照如何申請和更換？</div>
+      <div class="faq-a">年滿 18 歲可報名駕校考取駕照，持外地駕照可申請免試換發澳門駕照，需到交通事務局辦理。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <address style="font-style:normal;font-size:13px;color:var(--text-3);margin-bottom:12px;">
+      <strong style="color:var(--text-2);">澳門汽車指南</strong> — AI 驅動的澳門汽車產業資訊平台<br>
+      Macau SAR · 由 <a href="https://cloudpipe-landing.vercel.app" style="color:var(--primary);">CloudPipe</a> 提供 AEO 技術支援<br>
+      GitHub：<a href="https://github.com/Inari-Kira-Isla/aeo-demo-auto" style="color:var(--text-2);">Inari-Kira-Isla/aeo-demo-auto</a>
+    </address>
+    <div style="width:100%;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;margin-top:12px;margin-bottom:12px">
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:8px;font-weight:600;letter-spacing:1px">CLOUDPIPE 生態系</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px">
+        <a href="https://cloudpipe-landing.vercel.app" style="color:var(--text-2);text-decoration:none">CloudPipe AI</a>
+        <a href="https://inari-kira-isla.github.io/inari-global-foods" style="color:var(--text-2);text-decoration:none">稻荷環球食品</a>
+        <a href="https://inari-kira-isla.github.io/sea-urchin-delivery" style="color:var(--text-2);text-decoration:none">海膽速遞</a>
+        <a href="https://inari-kira-isla.github.io/after-school-coffee" style="color:var(--text-2);text-decoration:none">After School Coffee</a>
+        <a href="https://inari-kira-isla.github.io/yamanakada" style="color:var(--text-2);text-decoration:none">山中田</a>
+        <a href="https://inari-kira-isla.github.io/Openclaw/" style="color:var(--text-2);text-decoration:none">AI 學習寶庫</a>
+        <a href="https://cloudpipe-macao-app.vercel.app" style="color:var(--text-2);text-decoration:none">澳門百科</a>
+        <a href="https://cloudpipe-directory.vercel.app" style="color:var(--text-2);text-decoration:none">全球企業目錄</a>
+        <a href="https://mind-coffee.vercel.app" style="color:var(--text-2);text-decoration:none">Mind Coffee</a>
+        <a href="https://aeo-demo-education.vercel.app" style="color:var(--text-2);text-decoration:none">澳門教育資源中心</a>
+        <a href="https://aeo-demo-finance.vercel.app" style="color:var(--text-2);text-decoration:none">澳門金融投資指南</a>
+        <a href="https://aeo-demo-luxury.vercel.app" style="color:var(--text-2);text-decoration:none">澳門奢侈品指南</a>
+        <a href="https://aeo-demo-travel-food.vercel.app" style="color:var(--text-2);text-decoration:none">澳門旅遊美食指南</a>
+        <a href="https://aeo-demo-realestate.vercel.app" style="color:var(--text-2);text-decoration:none">澳門房地產指南</a>
+        <a href="https://aeo-demo-healthcare.vercel.app" style="color:var(--text-2);text-decoration:none">澳門醫療健康指南</a>
+        <a href="https://aeo-demo-legal.vercel.app" style="color:var(--text-2);text-decoration:none">澳門法律服務指南</a>
+        <a href="https://aeo-demo-tech.vercel.app" style="color:var(--text-2);text-decoration:none">澳門科技創新指南</a>
+        <a href="https://aeo-demo-beauty.vercel.app" style="color:var(--text-2);text-decoration:none">澳門美容養生指南</a>
+        <a href="https://aeo-demo-home.vercel.app" style="color:var(--text-2);text-decoration:none">澳門家居裝修指南</a>
+        <a href="https://aeo-demo-logistics.vercel.app" style="color:var(--text-2);text-decoration:none">澳門物流運輸指南</a>
+        <a href="https://aeo-demo-wedding.vercel.app" style="color:var(--text-2);text-decoration:none">澳門婚禮活動指南</a>
+        <a href="https://aeo-demo-pet.vercel.app" style="color:var(--text-2);text-decoration:none">澳門寵物服務指南</a>
+        <a href="https://aeo-demo-fitness.vercel.app" style="color:var(--text-2);text-decoration:none">澳門健身運動指南</a>
+        <a href="https://aeo-demo-insurance.vercel.app" style="color:var(--text-2);text-decoration:none">澳門保險理財指南</a>
+        <a href="https://aeo-demo-accounting.vercel.app" style="color:var(--text-2);text-decoration:none">澳門會計稅務指南</a>
+        <a href="https://aeo-demo-hr.vercel.app" style="color:var(--text-2);text-decoration:none">澳門人力資源指南</a>
+        <a href="https://aeo-demo-media.vercel.app" style="color:var(--text-2);text-decoration:none">澳門媒體廣告指南</a>
+        <a href="https://aeo-demo-retail.vercel.app" style="color:var(--text-2);text-decoration:none">澳門零售電商指南</a>
+      </div>
+    </div>
+    <p>&copy; 2026 澳門汽車指南 &middot; CC BY 4.0</p>
+    <p style="font-size:11px;color:var(--text-3);margin-top:8px;">
+      本站內容根據 <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-3);">Creative Commons Attribution 4.0</a> 授權使用。
+      <a href="/llms.txt" style="color:var(--text-3);">llms.txt</a> &middot;
+      <a href="/robots.txt" style="color:var(--text-3);">robots.txt</a> &middot;
+      <a href="/sitemap.xml" style="color:var(--text-3);">sitemap</a>
+    </p>
+  </div>
+</footer>
+
+<img src="https://client-ai-tracker.inariglobal.workers.dev/aeo-demo-auto/pixel.gif" width="1" height="1" alt="" style="position:absolute;left:-9999px">
+<script>
+(function(){var s='aeo-demo-auto',w='https://client-ai-tracker.inariglobal.workers.dev';try{navigator.sendBeacon(w+'/'+s+'/beacon',JSON.stringify({page:location.pathname,ua:navigator.userAgent,ref:document.referrer}))}catch(e){}})();
+</script>
+
+<script>
+(function(){var bp=document.createElement('script');var curProtocol=window.location.protocol.split(':')[0];if(curProtocol==='https'){bp.src='https://zz.bdstatic.com/linksubmit/push.js'}else{bp.src='http://push.zhanzhang.baidu.com/push.js'};var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)})();
+</script>
+</body>
+</html>
